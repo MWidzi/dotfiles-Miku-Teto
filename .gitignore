@@ -1,0 +1,8 @@
+discord/Cache/*
+discord/Code Cache/*
+discord/DawnGraphiteCache/*
+discord/DawnWebGPUCache/*
+discord/GPUCache/*
+discord/component_crx_cache/*
+zsh/.zhistory
+zsh/.zcompdump
