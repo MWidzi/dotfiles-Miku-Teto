@@ -2,7 +2,7 @@
 {
     "height": 40,
     "spacing": 5,
-
+    "output": "DP-1",
     // Choose the order of the modules
     "modules-left": [
         "group/Util",
@@ -88,6 +88,8 @@
     // Modules config
     "hyprland/workspaces": {
        "format": "{icon}",
+       "all-outputs": true,
+       "active-only": false,
        "on-scroll-up": "hyprctl dispatch workspace e+1",
        "on-scroll-down": "hyprctl dispatch workspace e-1"
     },
