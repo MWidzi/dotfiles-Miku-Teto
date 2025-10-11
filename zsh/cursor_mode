@@ -1,0 +1,27 @@
+cursor_mode() {
+    # https://ttssh2.osdn.jp/manual/4/en/usage/tips/vim.html
+
+    cursor_block_blink='\e[1 q' # blinking block cursor
+    cursor_beam_blink='\e[5 q'  # blinking vertical bar cursor (beam)
+
+    function zle-keymap-select {
+        if [[ ${KEYMAP} == vicmd ]] ||
+           [[ $1 = 'block' ]]; then
+            echo -ne $cursor_block_blink
+        elif [[ ${KEYMAP} == main ]] ||
+             [[ ${KEYMAP} == viins ]] ||
+             [[ ${KEYMAP} = '' ]] ||
+             [[ $1 = 'beam' ]]; then
+            echo -ne $cursor_beam_blink
+        fi
+    }
+
+    zle-line-init() {
+        echo -ne $cursor_beam_blink
+    }
+
+    zle -N zle-keymap-select
+    zle -N zle-line-init
+}
+
+cursor_mode

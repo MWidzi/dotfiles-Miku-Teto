@@ -1,0 +1,73 @@
+configuration {
+    modes: "drun,recursivebrowser,filebrowser,window";
+    font: "Hack Nerd Font 15";
+    fixed-num-lines: false;
+    show-icons: true;
+    display-drun:               "";
+    display-filebrowser:        "";
+    display-window:             "";
+    /*	display-ssh: ;*/
+    display-recursivebrowser:   "";
+	drun-display-format:        "{name}";
+	window-format:              "{w} · {c} · {t}";
+    /*	preview-cmd: ;*/
+    /*	on-selection-changed: ;*/
+    /*	on-mode-changed: ;*/
+    /*	on-entry-accepted: ;*/
+    /*	on-menu-canceled: ;*/
+    /*	on-menu-error: ;*/
+    /*	on-screenshot-taken: ;*/
+    terminal: "kitty";
+    /*	drun-match-fields: "name,generic,exec,categories,keywords";*/
+    /*	drun-categories: ;*/
+    /*	drun-exclude-categories: ;*/
+    sidebar-mode: true;
+    hover-select: false;
+    scroll-method: 1;
+    /*	window-format: "{w}    {c}   {t}";*/
+    /*	kb-primary-paste: "Control+V,Shift+Insert";*/
+    /*	kb-secondary-paste: "Control+v,Insert";*/
+    /*	kb-secondary-copy: "Control+c";*/
+    kb-clear-line: "Control+q";
+    kb-move-front: "Control+0";
+    kb-move-end: "Control+4";
+    kb-move-word-back: "Control+b";
+    kb-move-word-forward: "Control+w";
+    kb-move-char-back: "Control+h";
+    kb-move-char-forward: "Control+l";
+    kb-remove-word-back: "Shift+b";
+    kb-remove-word-forward: "Shift+w";
+    kb-remove-char-forward: "Control+x,Delete";
+    kb-remove-char-back: "BackSpace";
+    kb-remove-to-eol: "Control+i";
+    kb-remove-to-sol: "Control+a";
+    kb-accept-entry: "Return";
+    kb-mode-next: "Control+Shift+l,Control+Tab";
+    kb-mode-previous: "Control+Shift+h,Control+Shift+Tab";
+    kb-mode-complete: "Shift+Tab";
+    /*	kb-row-left: "Control+Page_Up";*/
+    /*	kb-row-right: "Control+Page_Down";*/
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+    kb-entry-history-up: "Control+Up";
+    kb-entry-history-down: "Control+Down";
+  timeout {
+      action: "kb-cancel";
+      delay:  0;
+  }
+  filebrowser {
+      directories-first: true;
+      sorting-method:    "name";
+      show-hidden: true;
+      command: "/home/widzi/bin/open_with_nvim_or_xdg.sh";
+      directory: "/home/widzi";
+  }
+  recursivebrowser {
+    show-hidden: true;
+    command: "/home/widzi/bin/open_with_nvim_or_xdg.sh";
+  }
+}
+
+//@theme "/usr/share/rofi/themes/DarkBlue.rasi"
+
+@theme "./theme.rasi"

@@ -1,0 +1,29 @@
+--border rounded
+--list-border rounded
+--input-border rounded
+--header-border rounded
+--preview-border rounded
+--preview-window=down
+--height 40%
+--layout reverse
+--scroll-off=200
+--padding 1,2
+--border-label 'fzf'
+--input-label 'Input'
+--header-label 'File Type'
+--preview '/home/widzi/Documents/scripts/fzf-preview.sh {}'
+--bind 'result:transform-list-label:
+if [[ -z \$FZF_QUERY ]]; then
+echo \" \$FZF_MATCH_COUNT items \";
+else echo \" \$FZF_MATCH_COUNT matches for [\$FZF_QUERY] \";
+fi'
+--bind 'focus:transform-preview-label:[[ -n {} ]] && printf \" Previewing [%s] \" {}'
+--bind 'focus:+transform-header:file --brief {} || echo \"No file selected\"'
+--bind 'ctrl-r:change-list-label(Reloading the list)+reload(sleep 2; git ls-files)'
+--color 'border:#5b2538,label:#A0546D'
+--color 'preview-border:#923852,preview-label:#ccccff'
+--color 'list-border:#1184a3,list-label:#1184a3'
+--color 'input-border:#1184a3,input-label:#439fb5'
+--color 'header-border:#1184a3,header-label:#439fb5'
+--color 'prompt:#923852,info:#A0546D'
+--color 'bg:#131229,bg+:#131229,hl:#42d6e7,hl+:#7de8f4,pointer:#923852'

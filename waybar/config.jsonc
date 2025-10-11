@@ -1,0 +1,204 @@
+// -*- mode: jsonc -*-
+{
+    "height": 40,
+    "spacing": 5,
+
+    // Choose the order of the modules
+    "modules-left": [
+        "group/Util",
+        "group/Workspaces",
+        "custom/media"
+    ],
+    "modules-center": [
+        "group/Clock"
+    ],
+    "modules-right": [
+        "group/Info",
+        "group/Sys",
+        "custom/power"
+    ],
+
+    //groups so it's easier to find stuff and separators don't make a mess
+    "group/Util": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/Left",
+            "pulseaudio",
+            "custom/sep",
+            "custom/swaync",
+            "custom/Right"
+        ]
+    },
+    "group/Workspaces": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/Left",
+            "hyprland/workspaces",
+            "custom/Right"
+        ]
+    },
+    "group/Clock": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/Left",
+            "clock",
+            "custom/Right"
+        ]
+    },
+    "group/Info": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/Left",
+            "cpu",
+            "custom/sep",
+            "memory",
+            "custom/sep",
+            "temperature",
+            "custom/Right"
+        ]
+    },
+    "group/Sys": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/Left",
+            "hyprland/window",
+            "custom/sep",
+            "network",
+            "battery",
+            "custom/Right"
+        ]
+    },
+
+
+    //separators 
+    "custom/Left": {
+        "format": "[",
+        "tooltip": false
+    },
+    "custom/Right": {
+        "format": "]",
+        "tooltip": false
+    },
+    "custom/sep": {
+        "format": "|",
+        "tooltip": false
+    },
+
+
+    // Modules config
+    "hyprland/workspaces": {
+       "format": "{icon}",
+       "on-scroll-up": "hyprctl dispatch workspace e+1",
+       "on-scroll-down": "hyprctl dispatch workspace e-1"
+    },
+    "hyprland/window": {
+      "max-length": 10,
+      "format": "{class}"
+    },
+    "hyprland/submap": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "clock": {
+        "timezone": "",
+        "tooltip-format": "<tt><big>{calendar}</big></tt>",
+        "format": "  {:%a — %F — %H:%M}",
+    },
+    "cpu": {
+        "format": "CPU: {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "RAM: {}%"
+    },
+    "custom/swaync": {
+      "format": "",
+      "exec": "swaync-client -swb",
+      "on-click": "swaync-client --toggle-panel",
+      "interval": 0
+    },
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format": "TEMP: {temperatureC}°C",
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-full": "{icon} {capacity}%",
+        "format-charging": " {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-icons": ["", "", "", "", ""],
+    },
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+    "network": {
+        "format-wifi": "{icon}",
+        "format-ethernet": "{ipaddr}/{cidr} ",
+        "tooltip-format": "{ifname} via {gwaddr} ",
+        "format-linked": "{ifname} (No IP) ",
+        "format-disconnected": "⚠",
+        "on-click": "nm-connection-editor",
+        "format-icons": [ "󰤯", "󰤟", "󰤢", "󰤥", "󰤨" ]
+    },
+
+    "pulseaudio": {
+        "scroll-step": 1,
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": "",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "easyeffects"
+    },
+
+    "custom/media": {
+        "format": "{icon}  {text}",
+        "return-type": "json",
+        "always-on": true,
+        "format-icons": {
+            "spotify": "",
+            "default": "󰎆"
+        },
+        "escape": true,
+        "exec": "~/.config/waybar/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl -p spotify play-pause",
+        "on-scroll-up": "playerctl -p spotify next",
+        "on-scroll-down": "playerctl -p spotify previous"
+    },
+    "custom/power": {
+        "format" : " ⏻ ",
+		"tooltip": false,
+		"menu": "on-click",
+		"menu-file": "$HOME/.config/waybar/power_menu.xml",
+		"menu-actions": {
+			"shutdown": "shutdown",
+			"reboot": "reboot",
+			"suspend": "systemctl suspend",
+			"hibernate": "systemctl hibernate"
+		}
+    }
+}
