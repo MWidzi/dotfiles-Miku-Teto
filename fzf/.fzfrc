@@ -3,7 +3,6 @@
 --input-border rounded
 --header-border rounded
 --preview-border rounded
---preview-window=down
 --height 40%
 --layout reverse
 --scroll-off=200
