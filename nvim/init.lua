@@ -752,6 +752,23 @@ require('lazy').setup({
                         local server = servers[server_name] or {}
                         server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
 
+                        if server_name == 'phpactor' then
+                            require('lspconfig').phpactor.setup {
+                                root_dir = function(_)
+                                    return vim.loop.cwd()
+                                end,
+                                init_options = {
+                                    ['language_server.diagnostics_on_update'] = false,
+                                    ['language_server.diagnostics_on_open'] = false,
+                                    ['language_server.diagnostics_on_save'] = false,
+                                    ['language_server_phpstan.enabled'] = false,
+                                    ['language_server_psalm.enabled'] = false,
+                                },
+                                capabilities = server.capabilities,
+                            }
+                            return
+                        end
+
                         if server_name == 'omnisharp' then
                             local mono_path = 'mono'
                             local omni_path = vim.fn.stdpath 'data' .. '/mason/packages/omnisharp/OmniSharp.exe'

@@ -1,52 +1,9 @@
-:root {
-  --cc-bg: rgba(46, 46, 46, 0.7);
-  --noti-border-color: rgba(255, 255, 255, 0.15);
-  --noti-bg: 48, 48, 48;
-  --noti-bg-alpha: 0.8;
-  --noti-bg-darker: rgb(38, 38, 38);
-  --noti-bg-hover: rgb(56, 56, 56);
-  --noti-bg-focus: rgba(68, 68, 68, 0.6);
-  --noti-close-bg: rgb(78, 78, 78);
-  --noti-close-bg-hover: rgb(94, 94, 94);
-  --text: rgb(255, 255, 255);
-  --text-disabled: rgb(150, 150, 150);
-  --bg-selected: rgb(0, 128, 255);
-  --notification-icon-size: 64px;
-  --notification-app-icon-size: calc(var(--notification-icon-size) / 3);
-  --notification-group-icon-size: 32px;
-  --border: 1px solid var(--noti-border-color);
-  --border-radius: 6px;
-  --notification-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3),
-    0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
-  --font-size-body: 15px;
-  --font-size-summary: 16px;
-  /* Deprecated variables (because of their typos). Keeeping them around for backwards compatibility. */
-  --hover-tranistion: background 0.15s ease-in-out;
-  --group-collapse-tranistion: opacity 400ms ease-in-out;
-  --hover-transition: var(--hover-tranistion);
-  --group-collapse-transition: var(--group-collapse-tranistion);
-
-
-
-/*------------------------------------------------------------------------------------------------------------------------------*/
-    background: rgba(19, 18, 41, 0.87);
-    backgroundHl: #2e294e;
-    main1: #1184a3;
-    main2: #923852;
-    main1Hl: #439fb5;
-    main2Hl: #A0546D;
-    text: #FFFFFF;
-}
-
 /* ========================================================================
    SwayNC CSS Configuration - Catppuccin Theme
    Reformatted for better readability and maintainability
 ======================================================================== */
 
-/* ========================================================================
-   COLOR PALETTE
-======================================================================== */
-@define-color bg-primary rgba(19, 18, 41, 0.87);        /* Dark background - main canvas */
+@define-color bg-primary #131229;
 @define-color bg-secondary #2e294e;      /* Secondary background - panels */
 @define-color bg-tertiary #2e294e;       /* Tertiary background - hover states */
 @define-color bg-selected #2e294e;       /* Selection background */
@@ -56,18 +13,29 @@
 @define-color fg-tertiary #FFFFFF;       /* Tertiary text - greyish cream */
 @define-color fg-disabled #FFFFFF;       /* Disabled text - dark grey */
 
+@define-color main1 #1184a3;
+@define-color main2 #923852;
+
+@define-color main1-accent #439fb5;
+@define-color main2-accent #A0546D;
+ 
 @define-color accent-green #78997A;       /* Spotify green accent */
 @define-color accent-orange #D08B57;      /* Warm orange accent */
 @define-color accent-red #B05A5A;         /* Error/critical red */
 @define-color accent-blue #7699A3;        /* Info blue */
-@define-color accent-purple #8D7AAE;      /* Purple accent */
+@define-color purple #8D7AAE;      /* Purple accent */
 
 @define-color border-primary #504945;     /* Primary border color */
 @define-color border-focus #b8bb26;       /* Focus border - green accent */
 
-/* Special Purpose Colors */
-@define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
-@define-color mpris-button-hover rgba(0, 0, 0, 0.5);
+/* Special Purpose Colors */ 
+@define-color mpris-button-hover rgba(17, 132, 163, 0.5);
+
+/* ========================================================================
+   SwayNC CSS Configuration - Catppuccin Theme
+   Reformatted for better readability and maintainability
+======================================================================== */
+
 
 /* ========================================================================
    GLOBAL STYLES
@@ -86,22 +54,27 @@
 .control-center {
     background-color: @bg-primary;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.65);
-    border: 2px solid @accent-orange;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-image: 
+      linear-gradient(#131229, #131229),
+      linear-gradient(105deg, #1184a3, #1184a3, #923852, #923852);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
     padding: 5px;
-    border-radius: 4px;
 }
 
 .control-center .notification-row .notification-background {
-    border-radius: 4px;
+    border-radius: 5px;
     margin-top: 5px;
 }
 
 .control-center .notification-row .notification-background .notification {
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .control-center .notification-row .notification-background .close-button {
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 /* ========================================================================
@@ -109,9 +82,17 @@
 ======================================================================== */
 .notification {
     background-color: @bg-primary;
-    border-radius: 4px;
-    border: 1px solid @fg-secondary;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    background-image: 
+      linear-gradient(#131229, #131229),
+      linear-gradient(120deg, #1184a3, #1184a3, #923852, #923852);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
     margin: 8px 2px;
+}
+.notification:hover {
+    background-color: @bg-secondary;
 }
 
 .notification > *:last-child > * {
@@ -120,8 +101,12 @@
 
 /* Notification Content */
 .notification-content {
-    padding: 15px 10px 10px 20px;
-    border-radius: 4px;
+    padding: 5px 5px 5px 10px;
+    border-radius: 5px;
+}
+.notification-content:hover {
+    background-color: @bg-secondary;
+    border-radius: 0px;
 }
 
 /* Text Elements */
@@ -137,11 +122,16 @@
     font-size: 1rem;
 }
 
+
+.notification-background .notification-default-action:hover {
+    background: @bg-secondary;
+    border-radius: 0px;
+}
 /* Notification Actions */
 .notification-action > button {
     padding: unset;
     margin: unset;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .notification-action > label {
@@ -151,30 +141,36 @@
 
 /* Notification Priority Styles */
 .notification.critical {
-    background-color: @accent-red;
+    background-color: @main2;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .notification.low,
 .notification.normal {
     background-color: @bg-primary;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.65);
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 /* Close Button */
 .close-button {
     background-color: transparent;
+    margin-right: 10px;
+    margin-top: 15px;
 }
 
-.close-button:hover {
-    color: @accent-red;
+.close-button:hover { /* TODO: fix this shit */
+    color: #FF0000;
 }
 
 /* ========================================================================
    NOTIFICATION GROUPS
 ======================================================================== */
+.notification-group{
+    background-color: @bg-primary;
+}
+
 .notification-group-header,
 .notification-group-icon {
     font-size: 0.9rem;
@@ -184,23 +180,23 @@
 .notification-group-close-all-button {
     box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.35);
     background-color: @bg-tertiary;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 .notification-group-collapse-button:hover {
-    background-color: @accent-blue;
+    background-color: @main1;
 }
 
 .notification-group-close-all-button:hover {
-    background-color: @accent-red;
+    background-color: @main2;
 }
 
 /* ========================================================================
    SCROLLBARS & SLIDERS
 ======================================================================== */
 trough highlight {
-    background: @accent-blue;
-    border-radius: 4px;
+    background: @main1;
+    border-radius: 5px;
 }
 
 scale trough {
@@ -208,17 +204,17 @@ scale trough {
     background-color: @bg-tertiary;
     min-height: 8px;
     min-width: 70px;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 slider {
     background-color: @fg-primary;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 tooltip {
     background-color: @bg-tertiary;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
 /* ========================================================================
@@ -236,26 +232,37 @@ tooltip {
 
 .widget-buttons-grid > flowbox > flowboxchild > button {
     background: @bg-tertiary;
-    border: 1px solid @accent-green;
     box-shadow: 0px 0px 10px @bg-primary;
-    border-radius: 4px;
+    border-radius: 5px;
     min-width: 60px;
     min-height: 30px;
     padding: 7px;
     margin: 0 3px 0;
     transition: all .5s ease;
+    vertical-align: middle;
+    line-height: 1;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button:hover {
     background: @bg-selected;
+    outline: 2px solid @main1-accent;
+}
+
+/* this part mitigates the displacement of the icons idk how to fix it properly */
+.widget-buttons-grid > flowbox > flowboxchild:nth-child(2) > button > * {
+    margin-right: 2px;
+}
+.widget-buttons-grid > flowbox > flowboxchild:nth-child(3) > button > *,
+.widget-buttons-grid > flowbox > flowboxchild:nth-child(4) > button > * {
+    margin-right: 7px;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked {
-    background: @accent-green;
+    background: @main1;
 }
 
 .widget-buttons-grid > flowbox > flowboxchild > button.toggle:checked:hover {
-    background: @accent-green;
+    background: @main1;
 }
 
 /* ========================================================================
@@ -266,34 +273,34 @@ tooltip {
 .widget-mpris .widget-mpris-player {
     padding: 16px;
     margin: 16px 5px;
-    background-color: @mpris-button-hover;
-    border-radius: 4px;
+    background-color: @bg-secondary;
+    border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.65);
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-album-art {
-    border-radius: 4px;
+    border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.65);
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-title {
     font-weight: bold;
     font-size: 1.2rem;
-    color: @accent-purple;
+    color: @purple;
     margin: 0px 8px 8px 8px;
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-subtitle {
     font-size: 1rem;
-    color: @accent-purple;
+    color: @purple;
 }
 
 .widget-mpris .widget-mpris-player > box > button:hover {
-    background-color: @mpris-button-hover;
+    background-color: @bg-secondary;
 }
 
 .widget-mpris > box > button:hover {
-    background: alpha(@bg-selected, 0.6);
+    background: alpha(@bg-secondary, 0.6);
 }
 
 .widget-mpris button:first-child,
@@ -325,14 +332,18 @@ tooltip {
 
 .widget-volume > box > button {
     border: none;
-    background-color: #3A372F;
+    background-color: @bg-secondary;
 }
 .widget-volume > box > button:hover {
-    background-color: @accent-blue;
+    background-color: @main1;
     color: @fg-primary;
 }
 .widget-volume > box > button:active {
-    background-color: @accent-blue;
+    background-color: @main1-accent;
+}
+
+.widget-volume > box > label{
+    margin-left: 3px;
 }
 
 .per-app-volume {
@@ -348,6 +359,10 @@ tooltip {
     margin: unset;
     font-size: 1.1rem;
 }
+.widget-backlight > trough highlight {
+    background: @main2;
+    border-radius: 5px;
+}
 
 /* ========================================================================
    DND WIDGET - Do Not Disturb toggle
@@ -355,7 +370,7 @@ tooltip {
 
 /* DND text */
 .widget-dnd > label {
-    color: @accent-purple; /* Replace with your desired color */
+    color: @main2;
 }
 .widget-dnd {
     font-weight: bold;
@@ -365,7 +380,7 @@ tooltip {
 
 .widget-dnd > switch {
     font-size: initial;
-    border-radius: 4px;
+    border-radius: 5px;
     background: @bg-tertiary;
     border: none;
     box-shadow: none;
@@ -373,12 +388,12 @@ tooltip {
 }
 
 .widget-dnd > switch:checked {
-    background: @accent-purple;
+    background: @main2;
 }
 
 .widget-dnd > switch slider {
     background: @bg-primary;
-    border-radius: 4px;
+    border-radius: 5px;
     min-width: 18px;
     min-height: 18px;
 }
@@ -401,15 +416,14 @@ tooltip {
     padding: unset;
     margin: unset;
     text-shadow: none;
-    background: @accent-red;
+    background: @main2;
     border: none;
     box-shadow: none;
-    border-radius: 4px;
+    border-radius: 5px;
     padding: 0px 6px;
     transition: all .7s ease;
 }
 
 .widget-title > button:hover {
-    background: @accent-red;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.65);
+    background: @main2-accent;
 }
