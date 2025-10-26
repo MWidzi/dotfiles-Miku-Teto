@@ -1,7 +1,7 @@
 /* the config was heavily inspired by this one, go check them out https://www.reddit.com/r/unixporn/comments/1n7enhc/hyprland_second_linux_rice/#lightbox */
 
 /* variables */
-@define-color background rgba(19, 18, 41, 0.87);
+@define-color background rgb(19, 18, 41);
 @define-color background2_L rgba(17, 132, 163, 0.4);
 @define-color background2_R rgba(146, 56, 82, 0.4);
 @define-color main1 #1184a3;
@@ -29,6 +29,12 @@ window#waybar {
     color: @text;
     transition-property: background-color;
     transition-duration: .5s;
+    border: 2px solid transparent;
+    background-image: 
+      linear-gradient(#131229, #131229),
+      linear-gradient(120deg, #1184a3, #1184a3, #923852, #923852);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
 }
 window#waybar.hidden {
     opacity: 0.2;
@@ -39,30 +45,21 @@ window#waybar.empty #window {
 
 /* modules style */
 .modules-left {
-    margin: 10px 0 0 5px;
+    margin: 0 0 0 0;
     padding: 0 0 0 7px;
-    background-color: @background;
-    border: 2px solid @main1;
     border-radius: 5px;
 }
 .modules-center {
-    margin: 10px 0 0 0;
+    margin: 0 0 0 0;
     padding: 0 10px 0 10px;
-    background-color: #131229; /* no transparency so it dosen't get messed up by the background image */
     border-radius: 5px;
-    border: 2px solid transparent;
-    background-image: 
-      linear-gradient(#131229, #131229),
-      linear-gradient(120deg, #1184a3, #1184a3, #923852, #923852);
-    background-origin: border-box;
-    background-clip: padding-box, border-box;
 }
 .modules-right {
-    margin: 10px 5px 0 0;
+    margin: 0 0 0 0;
     padding: 0 10px 0 10px;
-    background-color: @background;
-    border: 2px solid @main2;
     border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
 }
 
 /* workspaces */
@@ -196,10 +193,6 @@ button:hover {
 }
 #custom-media:hover {
     background-color: @background2_L;
-}
-#custom-cava {
-    margin: 0px 10px;
-    padding: 0px 10px;
 }
 
 /* power profiles daemon */

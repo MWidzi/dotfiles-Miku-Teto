@@ -721,6 +721,7 @@ require('lazy').setup({
                     },
                 },
                 omnisharp = {},
+                ts_ls = {},
             }
 
             -- Ensure the servers and tools above are installed
@@ -741,6 +742,7 @@ require('lazy').setup({
                 'stylua', -- Used to format Lua code
                 'omnisharp',
                 'phpactor',
+                'ts_ls',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

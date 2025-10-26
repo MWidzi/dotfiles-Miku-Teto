@@ -1,21 +1,18 @@
 // -*- mode: jsonc -*-
 {
-    "height": 40,
+    "height": 30,
     "spacing": 5,
     "output": "eDP-1",
     // Choose the order of the modules
     "modules-left": [
-        "group/Util",
         "group/Workspaces",
         "custom/media"
     ],
     "modules-center": [
-        "group/cava"
+        "group/Clock"
     ],
     "modules-right": [
-        "group/Info",
-        "group/Sys",
-        "custom/power"
+        "group/Sys"
     ],
 
     //groups so it's easier to find stuff and separators don't make a mess
@@ -37,11 +34,11 @@
             "custom/Right"
         ]
     },
-    "group/cava": {
+    "group/Clock": {
         "orientation": "horizontal",
         "modules": [
             "custom/Left",
-            "custom/cava",
+            "clock",
             "custom/Right"
         ]
     },
@@ -61,7 +58,7 @@
         "orientation": "horizontal",
         "modules": [
             "custom/Left",
-            "clock",
+            "hyprland/window",
             "custom/sep",
             "network",
             "battery",
@@ -93,13 +90,18 @@
        "on-scroll-up": "hyprctl dispatch workspace e+1",
        "on-scroll-down": "hyprctl dispatch workspace e-1"
     },
+    "hyprland/window": {
+      "max-length": 10,
+      "format": "{class}"
+    },
     "hyprland/submap": {
         "format": "<span style=\"italic\">{}</span>"
     },
+
     "clock": {
         "timezone": "",
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
-        "format": "{:%H:%M}"
+        "format": "  {:%a — %F — %H:%M}",
     },
     "cpu": {
         "format": "CPU: {usage}%",
@@ -173,14 +175,18 @@
     },
 
     "custom/media": {
-        "format": "{}",
+        "format": "{icon}  {text}",
+        "return-type": "json",
         "always-on": true,
-        "interval" : 1,
+        "format-icons": {
+            "spotify": "",
+            "default": "󰎆"
+        },
         "escape": true,
-        "exec": "~/Dotfiles/scripts/get-song.sh wb",
-        "on-click": "playerctl play-pause",
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous"
+        "exec": "~/.config/waybar/mediaplayer.py 2> /dev/null",
+        "on-click": "playerctl -p spotify play-pause",
+        "on-scroll-up": "playerctl -p spotify next",
+        "on-scroll-down": "playerctl -p spotify previous"
     },
     "custom/power": {
         "format" : " ⏻ ",
@@ -193,9 +199,5 @@
 			"suspend": "systemctl suspend",
 			"hibernate": "systemctl hibernate"
 		}
-    },
-    "custom/cava": {
-        "exec" : "~/Dotfiles/scripts/waybarCava.sh",
-        "format" : "{}"
     }
 }

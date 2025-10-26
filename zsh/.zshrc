@@ -85,3 +85,9 @@ function y() {
   fi
   rm -f -- "$tmp"
 }
+
+function v() {
+  kitten @ set-background-opacity 1.0
+  nvim "$@"
+  kitten @ set-background-opacity 0.7
+}
