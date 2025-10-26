@@ -1,0 +1,3 @@
+i just use textfox (https://github.com/adriankarlen/textfox) with sideberry (my config is the json in this folder) and this firefox colors theme: https://color.firefox.com/?theme=XQAAAAL6AAAAAAAAAABBKYhm849SCia2CaaEGccwS-xMDPr0crMs8fNRZPHRpdZWuSbUxoTO5UB38bsrrjQGWgpseVxqzSbkwrGejoa1bNIjQEi6ceMtHjC0iFJSUldtiYJxEzwtF7ECDhfZMEwaMPCCmP0qpFyyyobeqIOvY-6MxmoQS87qBxbStxkTe8-rBqUS_NyELz89qSc2-4LGLVorErOfPMgu9Etvjo5p_X774ccg
+
+

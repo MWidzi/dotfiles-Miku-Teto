@@ -1,0 +1,18 @@
+:root {
+    --tf-font-family: "Hack Nerd Font";
+    --tf-accent: #923852;
+    --tf-bg: #131229;
+    --tf-border: #222043;
+    --tf-rounding: 5px;
+}
+#root.root {--border: #5a4a85;}
+#root.root {--active-el-fg: #923852;}
+#root.root {--notification-bg: rgb(19, 18, 41);}
+#root.root {--ctx-menu-bg: rgb(19, 18, 41);}
+#root.root {--popup-bg: rgb(19, 18, 41);}
+#root.root {--tabs-activated-fg: rgb(146, 56, 82);}
+#root.root {--nav-btn-fg: rgb(146, 56, 82);}
+#root.root {--toolbar-fg: rgb(146, 56, 82);}
+#root.root {--toolbar-el-overlay-selected-border: rgb(17, 132, 163);}
+#root.root {--toolbar-scrollbar-color: rgb(17, 132, 163);}
+#root.root {--general-border-radius: 5px;}
