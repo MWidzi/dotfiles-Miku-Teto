@@ -2,7 +2,7 @@
 {
     "height": 40,
     "spacing": 5,
-    "output": "eDP-1",
+    "output": "DP-1",
     // Choose the order of the modules
     "modules-left": [
         "group/Util",
@@ -144,7 +144,7 @@
     },
     "network": {
         "format-wifi": "{icon}",
-        "format-ethernet": "{ipaddr}/{cidr} ",
+        "format-ethernet": "󰈀",
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "⚠",
