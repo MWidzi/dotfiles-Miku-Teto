@@ -22,6 +22,7 @@ if [[ "$current_active_opacity" == "$opacity_on" ]]; then
     hyprctl keyword general:gaps_out $gaps_out_off
     hyprctl keyword decoration:rounding $rounding_off
     pkill waybar
+    pkill cava
     cp ~/Dotfiles/alt_styles/waybar/normal/config.jsonc ~/Dotfiles/waybar/config.jsonc
     cp ~/Dotfiles/alt_styles/waybar/normal/style.css ~/Dotfiles/waybar/style.css
     waybar
@@ -33,6 +34,7 @@ else
     hyprctl keyword general:gaps_out $gaps_out_on
     hyprctl keyword decoration:rounding $rounding_on
     pkill waybar
+    pkill cava
     cp ~/Dotfiles/alt_styles/waybar/alt/config.jsonc ~/Dotfiles/waybar/config.jsonc
     cp ~/Dotfiles/alt_styles/waybar/alt/style.css ~/Dotfiles/waybar/style.css
     waybar
