@@ -91,3 +91,9 @@ function v() {
   nvim "$@"
   kitten @ set-background-opacity 0.7
 }
+
+function btop() {
+  kitten @ set-background-opacity 1.0
+  /usr/bin/btop "$@"
+  kitten @ set-background-opacity 0.7
+}

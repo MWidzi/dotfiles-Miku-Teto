@@ -20,7 +20,7 @@ else
 fi
 
 if [[ "$playing" == "Paused" ]]; then
-    icon="▶"
+    icon=""
 else
     icon="⏸"
 fi

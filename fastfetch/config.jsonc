@@ -1,0 +1,159 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/master/doc/json_schema.json",
+  "logo": {
+    "type": "auto",
+    "source": "~/Dotfiles/images/teto_f_you.png",
+    "width": null,
+    "height": 13,
+    "padding": {
+      "top": 1,
+      "left": 5,
+      "right": 4
+    }
+  },
+  "display": {
+    "separator": "  ",
+    "color": {
+      "keys": "#923852",
+      "separator": "#1184a3"
+    },
+    "brightColor": true,
+    "key": {
+      "width": 0,
+      "type": "icon",
+      "paddingLeft": 4
+    },
+    "bar": {
+      "char": {
+        "elapsed": "■",
+        "total": "-"
+      },
+      "border": {
+        "left": "[ ",
+        "right": " ]",
+        "leftElapsed": "",
+        "rightElapsed": ""
+      },
+      "color": {
+        "elapsed": "auto",
+        "total": "97",
+        "border": "97"
+      },
+      "width": 10
+    },
+    "percent": {
+        "type": 2, 
+            "color": {
+            "green": "#1184a3",
+            "yellow": "#526e7b",
+            "red": "#923852"
+        }
+    }
+  },
+  "general": {
+    "thread": true,
+    "processingTimeout": 5000,
+    "detectVersion": true,
+    "playerName": "",
+    "dsForceDrm": false
+  },
+  "modules": [ 
+    "break",
+    {
+      "type": "os",
+      "keyIcon": "\u001b[38;2;17;132;163m\u001b[0m ",
+      "format": "{name}"
+    },
+    {
+      "type": "wm",
+      "keyIcon": "\u001b[38;2;17;132;163m\u001b[0m ",
+      "detectPlugin": false,
+      "format": "{pretty-name}"
+    },
+    {
+      "type": "packages",
+      "keyIcon": "\u001b[38;2;17;132;163m󰏖\u001b[0m ",
+      "disabled": [
+        "apk"
+      ],
+      "combined": false,
+      "format": "{all} pkgs"
+    },
+    {
+      "type": "shell",
+      "keyIcon": "\u001b[38;2;17;132;163m\u001b[0m ",
+      "format": "{process-name}"
+    },
+    {
+      "type": "editor",
+      "keyIcon": "\u001b[38;2;17;132;163m\u001b[0m ",
+      "format": "{Name}"
+    },
+    "break",
+    {
+      "type": "host",
+      "keyIcon": "󰌢"
+    },
+    {
+      "type": "uptime",
+      "keyIcon": ""
+    },
+    {
+      "type": "cpu",
+      "keyIcon": "",
+      "temp": false,
+      "showPeCoreCount": false,
+      "format": "{name} @ {freq-max}"
+    },
+    {
+      "type": "gpu",
+      "keyIcon": "󰾲",
+      "driverSpecific": false,
+      "detectionMethod": "pci",
+      "temp": false,
+      "hideType": "none",
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      },
+      "format": "{name}"
+    },
+    {
+      "type": "memory",
+      "keyIcon": "",
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      },
+      "format": "{used} / {total}"
+    },
+    {
+      "type": "disk",
+      "keyIcon": "",
+      "showRegular": true,
+      "showExternal": true,
+      "showHidden": false,
+      "showSubvolumes": false,
+      "showReadOnly": true,
+      "showUnknown": false,
+      "folders": "",
+      "hideFolders": "/efi:/boot:/boot/*",
+      "hideFS": "",
+      "useAvailable": false,
+      "percent": {
+        "green": 50,
+        "yellow": 80,
+        "type": 0
+      },
+      "format": "{size-used} / {size-total}"
+    }, 
+    "break",
+    {
+      "type": "colors",
+      "symbol": "circle",
+      "paddingLeft": 4
+    }
+  ]
+}

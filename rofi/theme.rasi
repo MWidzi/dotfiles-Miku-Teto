@@ -49,7 +49,7 @@ listbox {
 inputbar {
     enabled:                     true;
     spacing:                     10px;
-    padding:                     80px 60px 80px 30px;
+    padding:                     50px 60px 50px 30px;
     background-color:            transparent;
     background-image:            url("~/Dotfiles/wallpapers/teto_miku_banner.webp", width);
     text-color:                  @foreground;
@@ -106,7 +106,7 @@ button selected {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       7;
+    lines:                       10;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
