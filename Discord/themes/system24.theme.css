@@ -168,6 +168,11 @@ body {
         border-radius: 5px !important;
     }
 
+    #app-mount,
+    .app,
+    .theme-dark {
+        border-radius: 0 !important;
+    }
     
     ::-webkit-scrollbar-thumb {
         border-radius: 5px !important;

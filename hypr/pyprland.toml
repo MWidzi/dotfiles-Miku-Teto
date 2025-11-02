@@ -1,0 +1,16 @@
+[pyprland]
+plugins = ["scratchpads"]
+
+[scratchpads.term]
+animation = "fromTop"
+command = "kitty --class kitty-dropterm"
+class = "kitty-dropterm"
+size = "70% 60%"
+margin = 50
+
+[scratchpads.btop]
+animation = "fromBottom"
+command = "kitty --class kitty-btop btop"
+class = "kitty-btop"
+size = "75% 70%"
+margin = 50

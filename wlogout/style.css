@@ -20,6 +20,7 @@ button {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 40%;
+    transition: background-size 0.2s cubic-bezier(.55,0.0,.28,1.682), margin-top 0.2s cubic-bezier(.55,0.0,.28,1.682), margin-bottom 0.2s cubic-bezier(.55,0.0,.28,1.682);
 }
 
 button:first-child {
@@ -41,26 +42,20 @@ button:focus, button:active, button:hover {
 
 #lock:focus,
 #lock:active,
-#lock:hover,
 #logout:focus,
 #logout:active,
-#logout:hover,
 #suspend:focus,
-#suspend:active,
-#suspend:hover
+#suspend:active
 {
     background-color: #1184A3;
 }
 
 #hibernate:focus,
 #hibernate:active,
-#hibernate:hover,
 #reboot:focus,
 #reboot:active,
-#reboot:hover,
 #shutdown:focus,
-#shutdown:active,
-#shutdown:hover
+#shutdown:active
 {
     background-color: #92385f;
 }

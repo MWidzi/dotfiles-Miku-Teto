@@ -62,7 +62,16 @@
     background-origin: border-box;
     background-clip: padding-box, border-box;
     padding: 5px;
+
+   /* transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;*/
 }
+
+/* .control-center.open {
+  transform: translateX(0);
+  opacity: 1;
+} */
 
 .control-center .notification-row .notification-background {
     border-radius: 5px;
