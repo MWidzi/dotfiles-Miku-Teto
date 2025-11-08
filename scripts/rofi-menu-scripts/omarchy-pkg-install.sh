@@ -1,0 +1,31 @@
+#!/bin/bash
+# taken from https://github.com/basecamp/omarchy/tree/master
+
+export FZF_DEFAULT_OPTS_FILE=~/.config/fzf/.fzfrc
+
+fzf_args=(
+  --multi
+  --border none
+  --border-label none
+  --height 100%
+  --header-label ''
+  --preview 'yay -Siia {1}'
+  --preview-label='alt-p: toggle description, alt-b/B: toggle PKGBUILD, alt-j/k: scroll, tab: multi-select'
+  --preview-label-pos='bottom'
+  --preview-window 'down:50%:wrap'
+  --bind 'focus:+transform-header:'
+  --bind 'alt-p:toggle-preview'
+  --bind 'alt-d:preview-half-page-down,alt-u:preview-half-page-up'
+  --bind 'alt-k:preview-up,alt-j:preview-down'
+  --bind 'alt-b:change-preview:yay -Gpa {1} | tail -n +5'
+  --bind 'alt-B:change-preview:yay -Siia {1}'
+  --color 'pointer:green,marker:green'
+)
+
+pkg_names=$(pacman -Slq | fzf "${fzf_args[@]}")
+
+if [[ -n "$pkg_names" ]]; then
+  # Convert newline-separated selections to space-separated for yay
+  echo "$pkg_names" | tr '\n' ' ' | xargs sudo pacman -S --noconfirm
+  ./omarchy-show-done.sh
+fi

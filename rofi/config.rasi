@@ -2,7 +2,6 @@ configuration {
     modes: "drun,recursivebrowser,filebrowser,window";
     font: "Hack Nerd Font 15";
     fixed-num-lines: false;
-    show-icons: true;
     display-drun:               "";
     display-filebrowser:        "";
     display-window:             "";
