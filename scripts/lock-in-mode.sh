@@ -16,6 +16,7 @@ rounding_off=5
 
 if [[ "$current_active_opacity" == "$opacity_on" ]]; then
     # Switch to "off" values
+    hyprctl keyword animations:enabled yes
     hyprctl keyword decoration:active_opacity $active_opacity_off
     hyprctl keyword decoration:inactive_opacity $inactive_opacity_off
     hyprctl keyword general:gaps_in $gaps_in_off
@@ -28,6 +29,7 @@ if [[ "$current_active_opacity" == "$opacity_on" ]]; then
     waybar
 else
     # Switch to "on" values
+    hyprctl keyword animations:enabled no
     hyprctl keyword decoration:active_opacity $opacity_on
     hyprctl keyword decoration:inactive_opacity $opacity_on
     hyprctl keyword general:gaps_in $gaps_in_on
