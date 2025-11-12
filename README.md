@@ -37,7 +37,7 @@ run
 git clone https://github.com/MWidzi/dotfiles-Miku-Teto/ ~/Dotfiles
 ```
 for the scripts to run correctly
--# I will fix this later to point to .config
+> I will fix this later to point to .config
 
 Most of the project relies on symlinks - ensure that none of the programs above except for vesktop have folders in .config and create a symlink for every folder in the cloned repo except for firefox and Discord - for Discord run
 ```sh
@@ -49,6 +49,6 @@ cp -r ~/Dotfiles/Discord/* ~/.config/vesktop
 
 for firefox refer to the .txt note in firefox folder
 
--# I might make a install script later on if i feel like it, for now it's manual install only
+> I might make a install script later on if i feel like it, for now it's manual install only
 
 after you've done everything restart your session and if something isn't working reboot the system, should be fine
