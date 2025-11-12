@@ -8,6 +8,13 @@ class = "kitty-dropterm"
 size = "70% 60%"
 margin = 50
 
+[scratchpads.bluetooth]
+animation = "fromTop"
+command = "kitty --class kitty-bluetooth bluetui"
+class = "kitty-bluetooth"
+position = "7px 50px"
+size = "70% 60%"
+
 [scratchpads.btop]
 animation = "fromBottom"
 command = "kitty --class kitty-btop btop"

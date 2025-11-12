@@ -130,8 +130,13 @@ button:hover {
 }
 #network,
 #battery,
-#custom-swaync {
+#custom-bluetui{
     padding: 0 10px;
+    margin: 0px;
+    border-radius: 10px;
+}
+#custom-swaync {
+    padding: 0 10px 0 8px;
     margin: 0px;
     border-radius: 10px;
 }
@@ -177,7 +182,8 @@ button:hover {
 }
 
 /* custom */
-#custom-swaync:hover {
+#custom-swaync:hover,
+#custom-bluetui:hover {
     background-color: @background2_L;
 }
 #custom-power{

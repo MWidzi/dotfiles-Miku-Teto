@@ -2,6 +2,8 @@
 
 options="dotfiles\ncoding\n.config\nsystem trash"
 selected=$(echo -e "$options" | rofi -dmenu)
+cp ~/Dotfiles/alt_styles/rofi/normal/theme.rasi ~/Dotfiles/rofi/theme.rasi
+
 case "$selected" in
     "dotfiles")
         kitty -d ~/Dotfiles ;;
