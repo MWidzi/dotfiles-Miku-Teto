@@ -26,6 +26,7 @@
             "pulseaudio",
             "custom/sep",
             "custom/swaync",
+            "custom/bluetui",
             "custom/Right"
         ]
     },
@@ -114,6 +115,10 @@
       "on-click": "swaync-client --toggle-panel",
       "interval": 0
     },
+    "custom/bluetui": {
+      "format": "",
+      "on-click": "pypr toggle bluetooth"
+    },
     "temperature": {
         // "thermal-zone": 2,
         // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
@@ -178,9 +183,7 @@
         "interval" : 1,
         "escape": true,
         "exec": "~/Dotfiles/scripts/get-song.sh wb",
-        "on-click": "playerctl play-pause",
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous"
+        "on-click": "~/Dotfiles/scripts/rofi-menu-scripts/rofi-menu-playerctl.sh"
     },
     "custom/power": {
         "format" : " ⏻ ",
