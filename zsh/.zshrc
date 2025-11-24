@@ -67,7 +67,12 @@ bindkey -r '^T'                  # unbind Ctrl+t
 bindkey '^F' fzf-file-widget     # bind Ctrl+f to fzf
 
 source /home/widzi/.config/zsh/completion.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+
+# zsh autosuggest config
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+bindkey '^L' autosuggest-accept
 
 # To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
 [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh

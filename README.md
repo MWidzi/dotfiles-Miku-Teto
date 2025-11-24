@@ -12,6 +12,7 @@
 - kitty
 - rofi
 - zsh
+- Hack Nerd Font
 ### Programs:
 - vesktop
 - btop
