@@ -103,6 +103,12 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+vim.keymap.set('n', '<leader>tn', function()
+    vim.cmd.tabnew()
+    vim.cmd.NvimTreeOpen()
+end, { desc = '[T]ab [N]ew' })
+vim.keymap.set('n', '<leader>tc', vim.cmd.tabclose, { desc = '[T]ab [C]lose' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
@@ -139,6 +145,46 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
     if vim.v.shell_error ~= 0 then
         error('Error cloning lazy.nvim:\n' .. out)
+    end
+end
+
+-- resize all sidebar plugins
+function AutoLayout()
+    local api = require 'nvim-tree.api'
+    local normal_buffers = {}
+
+    if api.tree.is_visible() then
+        local windows = vim.api.nvim_list_wins()
+
+        for _, win in ipairs(windows) do
+            local buf = vim.api.nvim_win_get_buf(win)
+            local buf_name = vim.api.nvim_buf_get_name(buf)
+            local buf_type = vim.api.nvim_buf_get_option(buf, 'buftype')
+
+            if buf_name ~= '' and (buf_type == 'nofile' or buf_type == 'nowrite') then
+                vim.api.nvim_set_current_win(win)
+                vim.cmd 'wincmd K'
+                if string.find(buf_name, 'diffpanel') then
+                    vim.cmd 'resize 10'
+                elseif string.find(buf_name, 'undotree') then
+                    vim.cmd 'resize 5'
+                elseif string.find(buf_name, 'NvimTree') then
+                    vim.cmd 'wincmd J'
+                    vim.cmd 'resize 20'
+                end
+            elseif buf_name ~= '' and (buf_type == '' or buf_type == 'normal') then
+                vim.api.nvim_set_current_win(win)
+                vim.cmd 'wincmd L'
+                normal_buffers[#normal_buffers + 1] = win
+            end
+        end
+        vim.cmd 'wincmd 10h'
+        vim.cmd 'vertical resize 30'
+
+        if #normal_buffers > 1 then
+            vim.api.nvim_set_current_win(normal_buffers[#normal_buffers])
+            vim.cmd 'vertical resize 50'
+        end
     end
 end
 
@@ -268,8 +314,34 @@ require('lazy').setup({
             pcall(require('telescope').load_extension, 'fzf')
             pcall(require('telescope').load_extension, 'ui-select')
 
+            local harpoon = require 'harpoon'
+            harpoon:setup {}
+
+            local conf = require('telescope.config').values
+            local function toggle_telescope(harpoon_files)
+                local file_paths = {}
+                for _, item in ipairs(harpoon_files.items) do
+                    table.insert(file_paths, item.value)
+                end
+
+                require('telescope.pickers')
+                    .new({}, {
+                        prompt_title = 'Harpoon',
+                        finder = require('telescope.finders').new_table {
+                            results = file_paths,
+                        },
+                        previewer = conf.file_previewer {},
+                        sorter = conf.generic_sorter {},
+                    })
+                    :find()
+            end
+
             -- See `:help telescope.builtin`
             local builtin = require 'telescope.builtin'
+            vim.keymap.set('n', '<C-e>', function()
+                toggle_telescope(harpoon:list())
+            end, { desc = 'Open harpoon window' })
+
             vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
             vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
             vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })
@@ -303,6 +375,31 @@ require('lazy').setup({
         end,
     },
 
+    {
+        'sindrets/diffview.nvim',
+        dependencies = 'nvim-lua/plenary.nvim',
+        cmd = { 'DiffviewOpen', 'DiffviewClose', 'DiffviewToggleFiles', 'DiffviewFocusFiles' },
+        keys = {
+            { '<leader>gd', '<cmd>DiffviewOpen<cr>', desc = 'Git [D]iffview' },
+            { '<leader>gD', '<cmd>DiffviewOpen --staged<cr>', desc = 'Git [D]iffview (staged)' },
+        },
+        opts = {},
+    },
+
+    { -- Visualize & resolve git conflict markers
+        'akinsho/git-conflict.nvim',
+        version = '*',
+        config = true, -- auto-setup with defaults
+        keys = {
+            { '<leader>co', '<Plug>(git-conflict-ours)', mode = { 'n', 'x' }, desc = 'Conflict take ours' },
+            { '<leader>ct', '<Plug>(git-conflict-theirs)', mode = { 'n', 'x' }, desc = 'Conflict take theirs' },
+            { '<leader>cb', '<Plug>(git-conflict-both)', mode = { 'n', 'x' }, desc = 'Conflict take both' },
+            { '<leader>c0', '<Plug>(git-conflict-none)', mode = { 'n', 'x' }, desc = 'Conflict take none' },
+            { ']x', '<Plug>(git-conflict-next-conflict)', desc = 'Next conflict' },
+            { '[x', '<Plug>(git-conflict-prev-conflict)', desc = 'Prev conflict' },
+        },
+    },
+
     -- LSP Plugins
     {
         'folke/lazydev.nvim',
@@ -329,6 +426,12 @@ require('lazy').setup({
             'saghen/blink.cmp',
         },
         config = function()
+            vim.filetype.add {
+                extension = {
+                    ejs = 'html',
+                },
+            }
+
             vim.api.nvim_create_autocmd('LspAttach', {
                 group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
                 callback = function(event)
@@ -460,6 +563,7 @@ require('lazy').setup({
                     },
                 },
                 omnisharp = {},
+                html = {},
                 ts_ls = {},
                 copilot = {},
             }
@@ -467,9 +571,10 @@ require('lazy').setup({
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 'stylua', -- Used to format Lua code
+                'html-lsp',
                 'omnisharp',
                 'phpactor',
-                'ts_ls',
+                'typescript-language-server',
             })
             require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -522,6 +627,14 @@ require('lazy').setup({
                                 ['textDocument/references'] = oe.references_handler,
                                 ['textDocument/implementation'] = oe.implementation_handler,
                             }
+                        end
+
+                        if server_name == 'ts_ls' then
+                            server.filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'html', 'ejs' }
+                        end
+
+                        if server_name == 'html' then
+                            server.filetypes = { 'html', 'php', 'ejs' }
                         end
 
                         require('lspconfig')[server_name].setup(server)
@@ -733,6 +846,32 @@ require('lazy').setup({
         end,
     },
     {
+        'ThePrimeagen/harpoon',
+        branch = 'harpoon2',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = {},
+        keys = {
+            {
+                '<leader>ha',
+                function()
+                    require('harpoon'):list():add()
+                end,
+                desc = 'Harpoon add file',
+            },
+            {
+                '<leader>hr',
+                function()
+                    require('harpoon'):list():remove()
+                end,
+                desc = 'Harpoon remove file',
+            },
+        },
+        config = function(_, opts)
+            local harpoon = require 'harpoon'
+            harpoon:setup(opts)
+        end,
+    },
+    {
         'nvim-tree/nvim-tree.lua',
         version = '*',
         lazy = false,
@@ -741,7 +880,7 @@ require('lazy').setup({
         },
         config = function()
             require('nvim-tree').setup {
-                view = { width = 35 },
+                view = { width = 30 },
                 renderer = { group_empty = true },
                 filters = { dotfiles = false },
             }
@@ -753,8 +892,24 @@ require('lazy').setup({
                 else
                     api.tree.open()
                 end
+
+                AutoLayout()
             end, { desc = 'Open or focus file explorer' })
         end,
+    },
+    {
+        'mbbill/undotree',
+        lazy = true,
+        keys = {
+            {
+                '<leader>u',
+                function()
+                    vim.cmd.UndotreeToggle()
+                    AutoLayout()
+                end,
+                desc = 'Toggle UndoTree',
+            },
+        },
     },
     {
         'folke/sidekick.nvim',
@@ -948,7 +1103,21 @@ require('lazy').setup({
         main = 'nvim-treesitter.configs', -- Sets main module to use for opts
         -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
         opts = {
-            ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+            ensure_installed = {
+                'bash',
+                'c',
+                'diff',
+                'html',
+                'javascript',
+                'typescript',
+                'lua',
+                'luadoc',
+                'markdown',
+                'markdown_inline',
+                'query',
+                'vim',
+                'vimdoc',
+            },
             -- Autoinstall languages that are not installed
             auto_install = true,
             highlight = {
