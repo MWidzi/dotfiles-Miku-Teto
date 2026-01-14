@@ -1,3 +1,6 @@
+[flavor]
+dark = "dracula"
+
 # vim:fileencoding=utf-8:foldmethod=marker
 
 # : Manager {{{
@@ -5,28 +8,19 @@
 [mgr]
 cwd = { fg = "#1184a3" }
 
-# Hovered
+# File list colors (overrides plugin rendering)
+selected         = { fg = "#131229", bg = "#439fb5" }
+preview_selected = { fg = "#131229", bg = "#7de8f4" }
+
 hovered         = { fg = "#131229", bg = "#1184a3", bold = true }
 preview_hovered = { underline = true }
 
-# Find
-find_keyword  = { fg = "#ead97c", bold = true, italic = true, underline = true }
-find_position = { fg = "#A0546D", bg = "reset", bold = true, italic = true }
+# Force file list colors
 
-# Marker
+# Keep your existing marker/border styles...
 marker_copied   = { fg = "#439fb5", bg = "#439fb5" }
-marker_cut      = { fg = "#ff4a43", bg = "#ff4a43" }
-marker_marked   = { fg = "#A0546D", bg = "#A0546D" }
-marker_selected = { fg = "#7de8f4", bg = "#7de8f4" }
-
-# Count
-count_copied   = { fg = "#131229", bg = "#439fb5" }
-count_cut      = { fg = "#131229", bg = "#ff4a43" }
-count_selected = { fg = "#131229", bg = "#7de8f4" }
-
-# Border
-border_symbol = "│"
-border_style  = { fg = "#5b2538", bold = true }
+marker_selected = { fg = "#131229", bg = "#7de8f4" }
+border_style    = { fg = "#5b2538", bold = true }
 
 # : }}}
 
@@ -167,6 +161,7 @@ title_error = { fg = "#ff4a43" }
 # : }}}
 
 
+
 # : File-specific styles {{{
 
 [filetype]
@@ -183,10 +178,9 @@ rules = [
 
 	# Documents
 	{ mime = "application/{pdf,doc,rtf}", fg = "#a6e3a1" },
-
 	# Fallback
-	{ name = "*", fg = "#FFFFFF" },
-	{ name = "*/", fg = "#923852" }
+	{ url = "*", fg = "#1184a3" },
+	{ url = "*/", fg = "#923852" },
 ]
 
 # : }}}
