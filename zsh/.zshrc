@@ -43,6 +43,8 @@ export FZF_CTRL_T_COMMAND="
 fd --type f --hidden -E .steam -E Steam
 "
 
+export MPD_HOST=$HOME/.local/share/mpd/socket
+
 #syntax highlighting
 ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets)
 
@@ -105,3 +107,10 @@ function btop() {
   /usr/bin/btop "$@"
   kitten @ set-background-opacity 0.7
 }
+
+function rmpc() {
+  kitten @ set-background-opacity 1.0
+  /usr/bin/rmpc "$@"
+  kitten @ set-background-opacity 0.7
+}
+

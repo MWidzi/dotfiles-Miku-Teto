@@ -153,6 +153,8 @@ function AutoLayout()
     local api = require 'nvim-tree.api'
     local normal_buffers = {}
     local terminal_buffers = {}
+    local width = vim.o.columns
+    local height = vim.o.lines
 
     if api.tree.is_visible() then
         local windows = vim.api.nvim_list_wins()
