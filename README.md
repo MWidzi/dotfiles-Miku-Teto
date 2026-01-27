@@ -4,6 +4,7 @@
 ![Setup Showcase Screenshot 2](./screenshots/showcase_2.png)
 ![Setup Showcase Screenshot 3](./screenshots/showcase_3.png)
 ![Setup Showcase Screenshot 4](./screenshots/showcase_4.png)
+![Setup Showcase Screenshot 5](./screenshots/showcase_5.png)
 ## Dependencies:
 ### Base:
 - hyprland

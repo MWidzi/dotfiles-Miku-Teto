@@ -16,16 +16,18 @@ scrolloff      = 200
 mouse_events   = [ "click", "scroll" ]
 title_format   = "Yazi: {cwd}"
 
+
 [preview]
-wrap            = "no"
-tab_size        = 4
-max_width       = 1200
-max_height      = 1000
-image_delay     = 30
-image_filter    = "triangle"
-image_quality   = 75
-ueberzug_scale  = 1
-ueberzug_offset = [ 0, 0, 0, 0 ]
+cache_dir      = "~/.cache/yazi"  # Ensures writable preview cache
+wrap           = "no"
+tab_size       = 4
+max_width      = 1200
+max_height     = 1000
+image_delay    = 30
+image_filter   = "triangle"
+image_quality  = 75
+ueberzug_scale = 1
+ueberzug_offset= [ 0, 0, 0, 0 ]
 
 [opener]
 edit = [
