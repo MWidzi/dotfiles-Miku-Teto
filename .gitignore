@@ -1,4 +1,5 @@
 discord/Cache/*
+nvim/doc/tags
 discord/Code Cache/*
 discord/DawnGraphiteCache/*
 discord/DawnWebGPUCache/*
