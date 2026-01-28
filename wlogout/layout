@@ -1,6 +1,6 @@
 {
     "label" : "lock",
-    "action" : "sh -c ~/Dotfiles/scripts/lock.sh",
+    "action" : "sh -c ~/.config/scripts/lock.sh",
     "text" : "Lock",
     "keybind" : "s"
 }

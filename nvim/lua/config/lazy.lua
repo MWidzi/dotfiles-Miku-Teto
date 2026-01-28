@@ -14,14 +14,6 @@ rtp:prepend(lazypath)
 
 require('lazy').setup({
     { import = 'config.themes' },
-    { -- Apply dynamic theme from global var
-        'nvim-lua/plenary.nvim',
-        priority = 1001,
-        config = function()
-            local theme = _G.theme or 'industry'
-            pcall(vim.cmd, 'colorscheme ' .. theme)
-        end,
-    },
     { import = 'config.plugins' },
 }, {
     ui = {

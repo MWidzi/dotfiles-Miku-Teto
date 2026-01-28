@@ -41,7 +41,7 @@ Get the packages listed above using your distros package manager
 
 run 
 ```sh
-git clone https://github.com/MWidzi/dotfiles-Miku-Teto/ ~/Dotfiles
+git clone https://github.com/MWidzi/dotfiles-Miku-Teto/ ~/.config
 ```
 for the scripts to run correctly
 > I will fix this later to point to .config
@@ -49,7 +49,7 @@ for the scripts to run correctly
 Most of the project relies on symlinks - ensure that none of the programs above except for vesktop have folders in .config and create a symlink for every folder in the cloned repo except for firefox and Discord - for Discord run
 ```sh
 rm -rf ~/.config/vesktop/themes ~/.config/vesktop/settings ~/.config/vesktop/settings.json
-cp -r ~/Dotfiles/Discord/* ~/.config/vesktop
+cp -r ~/.config/Discord/* ~/.config/vesktop
 ```
 > [!WARNING]
 > This will remove any previous settings you had so back that up before you run

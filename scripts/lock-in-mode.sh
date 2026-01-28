@@ -24,8 +24,8 @@ if [[ "$current_active_opacity" == "$opacity_on" ]]; then
     hyprctl keyword decoration:rounding $rounding_off
     pkill waybar
     pkill cava
-    cp ~/Dotfiles/alt_styles/waybar/normal/config.jsonc ~/Dotfiles/waybar/config.jsonc
-    cp ~/Dotfiles/alt_styles/waybar/normal/style.css ~/Dotfiles/waybar/style.css
+    cp ~/.config/alt_styles/waybar/normal/config.jsonc ~/.config/waybar/config.jsonc
+    cp ~/.config/alt_styles/waybar/normal/style.css ~/.config/waybar/style.css
     waybar
 else
     # Switch to "on" values
@@ -37,7 +37,7 @@ else
     hyprctl keyword decoration:rounding $rounding_on
     pkill waybar
     pkill cava
-    cp ~/Dotfiles/alt_styles/waybar/alt/config.jsonc ~/Dotfiles/waybar/config.jsonc
-    cp ~/Dotfiles/alt_styles/waybar/alt/style.css ~/Dotfiles/waybar/style.css
+    cp ~/.config/alt_styles/waybar/alt/config.jsonc ~/.config/waybar/config.jsonc
+    cp ~/.config/alt_styles/waybar/alt/style.css ~/.config/waybar/style.css
     waybar
 fi
