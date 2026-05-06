@@ -1,4 +1,4 @@
-# My arch+hyprland dotfiles project themed around Hatsune Miku and Kasane Teto (Work in Progress)
+# My arch+hyprland dotfiles project themed around Hatsune Miku and Kasane Teto
 ## Screenshots:
 ![Setup Showcase Screenshot 1](./screenshots/showcase_1.png)
 ![Setup Showcase Screenshot 2](./screenshots/showcase_2.png)
