@@ -1,4 +1,4 @@
-# My arch+hyprland dotfiles project themed around Hatsune Miku and Kasane Teto (Work in Progress)
+# My arch+hyprland dotfiles project themed around Hatsune Miku and Kasane Teto
 ## Screenshots:
 ![Setup Showcase Screenshot 1](./screenshots/showcase_1.png)
 ![Setup Showcase Screenshot 2](./screenshots/showcase_2.png)
@@ -44,7 +44,6 @@ run
 git clone https://github.com/MWidzi/dotfiles-Miku-Teto/ ~/.config
 ```
 for the scripts to run correctly
-> I will fix this later to point to .config
 
 Most of the project relies on symlinks - ensure that none of the programs above except for vesktop have folders in .config and create a symlink for every folder in the cloned repo except for firefox and Discord - for Discord run
 ```sh

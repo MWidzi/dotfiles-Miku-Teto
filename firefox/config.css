@@ -5,6 +5,7 @@
     --tf-border: #222043;
     --tf-rounding: 5px;
 }
+
 #root.root {--border: #5a4a85;}
 #root.root {--active-el-fg: #923852;}
 #root.root {--notification-bg: rgb(19, 18, 41);}

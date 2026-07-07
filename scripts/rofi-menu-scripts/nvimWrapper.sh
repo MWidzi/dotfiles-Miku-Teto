@@ -24,7 +24,7 @@ fzf_args=(
     --color 'bg:#131229,bg+:#131229,hl:#42d6e7,hl+:#7de8f4,pointer:#923852'
 )
 
-path=$(find . -type d | fzf "${fzf_args[@]}")
+path=$(fd --type d --hidden -E .steam -E Steam 2> /dev/null | fzf "${fzf_args[@]}")
 
 kitty @ set-background-opacity 1.0
 cd $path
