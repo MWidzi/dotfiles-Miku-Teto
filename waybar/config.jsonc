@@ -182,8 +182,8 @@
         "always-on": true,
         "interval" : 1,
         "escape": true,
-        "exec": "~/Dotfiles/scripts/get-song.sh wb",
-        "on-click": "~/Dotfiles/scripts/rofi-menu-scripts/rofi-menu-playerctl.sh"
+        "exec": "~/.config/waybar/scripts/get-song.sh wb",
+        "on-click": "~/.config/waybar/scripts/rofi-menu-playerctl.sh"
     },
     "custom/power": {
         "format" : " ⏻ ",
@@ -191,7 +191,7 @@
 		"on-click": "wlogout --buttons-per-row 6"
     },
     "custom/cava": {
-        "exec" : "~/Dotfiles/scripts/waybarCava.sh",
+        "exec" : "~/.config/waybar/scripts/waybarCava.sh",
         "format" : "{}"
     }
 }

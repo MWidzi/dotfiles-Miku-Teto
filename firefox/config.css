@@ -4,16 +4,54 @@
     --tf-bg: #131229;
     --tf-border: #222043;
     --tf-rounding: 5px;
-}
 
-#root.root {--border: #5a4a85;}
-#root.root {--active-el-fg: #923852;}
-#root.root {--notification-bg: rgb(19, 18, 41);}
-#root.root {--ctx-menu-bg: rgb(19, 18, 41);}
-#root.root {--popup-bg: rgb(19, 18, 41);}
-#root.root {--tabs-activated-fg: rgb(146, 56, 82);}
-#root.root {--nav-btn-fg: rgb(146, 56, 82);}
-#root.root {--toolbar-fg: rgb(146, 56, 82);}
-#root.root {--toolbar-el-overlay-selected-border: rgb(17, 132, 163);}
-#root.root {--toolbar-scrollbar-color: rgb(17, 132, 163);}
-#root.root {--general-border-radius: 5px;}
+    /* containers */
+    [data-color="yellow"],
+    .identity-color-yellow {
+        --color: #f6c177 !important;
+        --identity-tab-color: #f6c177 !important;
+        --identity-icon-color: #f6c177 !important;
+    }
+    [data-color="purple"],
+    .identity-color-purple {
+        --color: #c4a7e7 !important;
+        --identity-tab-color: #c4a7e7 !important;
+        --identity-icon-color: #c4a7e7 !important;
+    }
+    [data-color="blue"],
+    .identity-color-blue {
+        --color: #9ccfd8 !important;
+        --identity-tab-color: #9ccfd8 !important;
+        --identity-icon-color: #9ccfd8 !important;
+    }
+    [data-color="turquoise"],
+    .identity-color-turquoise {
+        --color: #9ccfd8 !important;
+        --identity-tab-color: #9ccfd8 !important;
+        --identity-icon-color: #9ccfd8 !important;
+    }
+    [data-color="green"],
+    .identity-color-green {
+        --color: #3e8fb0 !important;
+        --identity-tab-color: #3e8fb0 !important;
+        --identity-icon-color: #3e8fb0 !important;
+    }
+    [data-color="orange"],
+    .identity-color-orange {
+        --color: #f6c177 !important;
+        --identity-tab-color: #f6c177 !important;
+        --identity-icon-color: #f6c177 !important;
+    }
+    [data-color="red"],
+    .identity-color-red {
+        --color: #eb6f92 !important;
+        --identity-tab-color: #eb6f92 !important;
+        --identity-icon-color: #eb6f92 !important;
+    }
+    [data-color="pink"],
+    .identity-color-pink {
+        --color: #ea9a97 !important;
+        --identity-tab-color: #ea9a97 !important;
+        --identity-icon-color: #ea9a97 !important;
+    }
+}
