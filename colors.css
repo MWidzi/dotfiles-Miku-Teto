@@ -1,0 +1,25 @@
+:root {
+    --bg: #131229;
+    --fg: #c8c2d6;
+
+    --main1: #1184a3;
+    --main2: #923852;
+
+    --main1-accent: #439fb5;
+    --main2-accent: #b8586f;
+
+    --urgent1: #5db0c2;
+    --urgent2: #c24b57;
+
+    --accent-peach: #b58872;
+    --accent-cyan: #5db0c2;
+    --accent-amber: #a88554;
+    --accent-purple: #826c9f;
+    --accent-blue: #439fb5;
+    --accent-rose: #b8586f;
+
+    --surface0: #1f1e38;
+    --surface1: #2e294e;
+    --surface2: #3a3356;
+    --border-inactive: #4d426d;
+}

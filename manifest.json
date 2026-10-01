@@ -1,10 +1,14 @@
 {
     "services": [
-        "waybar"
+        "waybar",
+        "wlsunset -l 53.36681292618379 -L 14.650595233724927",
+        "wl-paste --watch cliphist store",
+        "swaync"
     ],
     "one_time": [
         "awww img ~/.config/wallpapers/teto_miku_wallpaper_1.webp --transition-fps 255 --transition-step 5",
         "awww img ~/.config/wallpapers/teto_miku_wallpaper_2.png --transition-fps 255 --transition-step 5 -o DP-3",
-        "awww img ~/.config/wallpapers/teto_miku_wallpaper_3.webp --transition-fps 255 --transition-step 5 -o HDMI-A-1"
+        "awww img ~/.config/wallpapers/teto_miku_wallpaper_3.webp --transition-fps 255 --transition-step 5 -o HDMI-A-1",
+        "echo 'ashen' > ~/.config/rice/nvim_theme"
     ]
 }
