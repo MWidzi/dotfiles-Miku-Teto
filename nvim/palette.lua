@@ -81,19 +81,21 @@ return {
             },
         }
 
-        vim.cmd 'colorscheme palette'
-        vim.api.nvim_set_hl(0, 'Keyword', { fg = '#1184a3', bold = true })
-        vim.api.nvim_set_hl(0, 'Function', { fg = '#d3a593' })
-        vim.api.nvim_set_hl(0, '@function.builtin', { fg = '#e7d2be' })
-        vim.api.nvim_set_hl(0, 'String', { fg = '#923852' })
-        vim.api.nvim_set_hl(0, 'Constant', { fg = '#923852' })
-        vim.api.nvim_set_hl(0, 'Type', { fg = '#8597a0' })
-        vim.api.nvim_set_hl(0, 'Comment', { fg = '#6d5f66', italic = true })
-        vim.api.nvim_set_hl(0, 'Identifier', { fg = '#90a3ac' })
-        vim.api.nvim_set_hl(0, 'Normal', { bg = '#131229', fg = '#c4bed9' })
-        vim.api.nvim_set_hl(0, 'Delimiter', { fg = '#b0c0ca' })
-        vim.api.nvim_set_hl(0, 'Bracket', { fg = '#b0c0ca' })
-        vim.api.nvim_set_hl(0, 'Visual', { bg = '#2e294e' }) -- darker blue with strong contrast
-        vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#222043' }) -- slightly lighter background
+        if _G.theme == 'palette' then
+            vim.cmd 'colorscheme palette'
+            vim.api.nvim_set_hl(0, 'Keyword', { fg = '#1184a3', bold = true })
+            vim.api.nvim_set_hl(0, 'Function', { fg = '#d3a593' })
+            vim.api.nvim_set_hl(0, '@function.builtin', { fg = '#e7d2be' })
+            vim.api.nvim_set_hl(0, 'String', { fg = '#923852' })
+            vim.api.nvim_set_hl(0, 'Constant', { fg = '#923852' })
+            vim.api.nvim_set_hl(0, 'Type', { fg = '#8597a0' })
+            vim.api.nvim_set_hl(0, 'Comment', { fg = '#6d5f66', italic = true })
+            vim.api.nvim_set_hl(0, 'Identifier', { fg = '#90a3ac' })
+            vim.api.nvim_set_hl(0, 'Normal', { bg = '#131229', fg = '#c4bed9' })
+            vim.api.nvim_set_hl(0, 'Delimiter', { fg = '#b0c0ca' })
+            vim.api.nvim_set_hl(0, 'Bracket', { fg = '#b0c0ca' })
+            vim.api.nvim_set_hl(0, 'Visual', { bg = '#2e294e' }) -- darker blue with strong contrast
+            vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#222043' }) -- slightly lighter background
+        end
     end,
 }
